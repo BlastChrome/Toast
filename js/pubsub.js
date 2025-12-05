@@ -22,4 +22,5 @@ class PubSub {
     });
   }
 }
-export default PubSub;
+const pubSub = new PubSub();
+export default pubSub;
