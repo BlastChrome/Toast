@@ -1,0 +1,140 @@
+:root {
+  --color-1: #3498db;
+  --color-2: #217dbb;
+  --color-3: #e67e22;
+  --color-4: #ca640f;
+  --color-5: #2ecc71;
+  --color-6: #27ae60;
+  --color-7: #e74c3c;
+  --color-8: #f1c40f;
+  --color-9: #1abc9c;
+}
+
+/* Box sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove default button and link styles */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Remove anchor underline */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Images and media should be responsive */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove animations and transitions for people that prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button {
+  margin-top: 10px;
+  color: #fff;
+  padding: 0.6em 1.3em;
+  border: none;
+  border-radius: 0.375em;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
+}
+
+button.color-1 {
+  background-color: var(--color-1);
+}
+button.color-2 {
+  background-color: var(--color-2);
+}
+button.color-3 {
+  background-color: var(--color-3);
+}
+button.color-4 {
+  background-color: var(--color-4);
+}
+button.color-5 {
+  background-color: var(--color-5);
+}
+button.color-6 {
+  background-color: var(--color-6);
+}
+button.color-7 {
+  background-color: var(--color-7);
+}
+button.color-8 {
+  background-color: var(--color-8);
+}
+button.color-9 {
+  background-color: var(--color-9);
+}
