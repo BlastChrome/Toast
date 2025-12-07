@@ -1,28 +1,30 @@
 import EVENTS from "./events.js";
-
 class Toast {
   constructor(pubsub) {
-    this.timing = 1000;
+    this.toastDuration = 5000; // default value
     this.toastEl = document.querySelector(".toast");
     this.pubSub = pubsub;
     this.pubSub.subscribe(EVENTS.colorChanged, this.showToast.bind(this));
   }
 
-  showToast({ message } = {}) {
+  showToast({ message, type, duration = 5000 } = {}) {
     const toastMessage = message || "Update available";
-    this.toastEl.querySelector(".toast__message").innerHTML = toastMessage;
+    const toastType = type || "success";
+    const toastDuration = duration || this.toastDuration;
+
+    this.toastEl.querySelector(".toast__message").textContent = toastMessage;
     this.toastEl.classList.add("show");
-    this.hideToast();
-    this.pubSub.publish(EVENTS.showToast, { message: toastMessage });
+    this.toastEl.classList.add(`toast--${toastType}`);
+    this.hideToast(toastDuration);
+    this.pubSub.publish(EVENTS.showToast, { message: toastMessage, type: toastType });
   }
 
-  hideToast() {
+  hideToast(duration) {
     setTimeout(() => {
-      this.toastEl.classList.remove("show");
-      this.toastEl.classList.add("hide");
-      this.toastEl.classList.remove("hide");
+      this.toastEl.classList.remove(...this.toastEl.classList);
+      this.toastEl.classList.add("toast");
       this.pubSub.publish(EVENTS.hideToast);
-    }, this.timing);
+    }, duration);
   }
 }
 export default Toast;

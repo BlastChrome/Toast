@@ -129,37 +129,42 @@ button {
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
 }
 
-button.color-1 {
-  background-color: var(--color-1);
-}
-button.color-2 {
-  background-color: var(--color-2);
-}
-button.color-3 {
-  background-color: var(--color-3);
-}
-button.color-4 {
-  background-color: var(--color-4);
-}
-button.color-5 {
+button.btn--success {
   background-color: var(--color-5);
 }
-button.color-6 {
-  background-color: var(--color-6);
-}
-button.color-7 {
+
+button.btn--error {
   background-color: var(--color-7);
 }
-button.color-8 {
-  background-color: var(--color-8);
+
+button.btn--info {
+  background-color: var(--color-1);
 }
-button.color-9 {
-  background-color: var(--color-9);
+
+button.btn--warning {
+  background-color: var(--color-3);
 }
 
 button:hover,
 button:focus-visible {
   transform: translateY(-2px) scale(1.01);
+}
+
+.panel {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--toast-border);
+  border-radius: var(--toast-radius);
+}
+
+input[type="text"],
+input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid var(--toast-border);
+  border-radius: var(--toast-radius);
+  color: #f8fafc;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .toast {
@@ -179,6 +184,7 @@ button:focus-visible {
   opacity: 0;
   transform: translate3d(30px, 20px, 0) scale(0.98);
   pointer-events: none;
+  overflow: hidden;
   transition: opacity var(--toast-duration) ease, transform var(--toast-duration) cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -214,6 +220,7 @@ button:focus-visible {
   cursor: pointer;
   padding: 0.25rem;
   transition: color 0.2s ease, transform 0.2s ease;
+  margin: 0;
 }
 
 .toast__action:hover,
@@ -227,24 +234,32 @@ button:focus-visible {
   inset: auto 0 0 0;
   height: 3px;
   border-radius: 0 0 var(--toast-radius) var(--toast-radius);
+  border-radius: var(--toast-radius);
   background: linear-gradient(90deg, #34d399, #3b82f6);
   transform-origin: left;
   animation: toast-progress linear forwards;
+  padding: 0.125rem;
+  margin: 0.125rem;
 }
 
 .toast--success {
-  border-color: rgba(16, 185, 129, 0.3);
-  background: linear-gradient(120deg, rgba(16, 185, 129, 0.18), transparent 60%), var(--toast-surface);
+  border-color: color-mix(in srgb, var(--color-5) 30%, transparent);
+  background-color: color-mix(in srgb, var(--toast-surface) 85%, var(--color-5) 15%);
 }
 
 .toast--error {
-  border-color: rgba(239, 68, 68, 0.35);
-  background: linear-gradient(120deg, rgba(239, 68, 68, 0.2), transparent 60%), var(--toast-surface);
+  border-color: color-mix(in srgb, var(--color-7) 35%, transparent);
+  background-color: color-mix(in srgb, var(--toast-surface) 85%, var(--color-7) 15%);
 }
 
 .toast--info {
-  border-color: rgba(59, 130, 246, 0.35);
-  background: linear-gradient(120deg, rgba(59, 130, 246, 0.2), transparent 60%), var(--toast-surface);
+  border-color: color-mix(in srgb, var(--color-1) 35%, transparent);
+  background-color: color-mix(in srgb, var(--toast-surface) 85%, var(--color-1) 15%);
+}
+
+.toast--warning {
+  border-color: color-mix(in srgb, var(--color-3) 35%, transparent);
+  background-color: color-mix(in srgb, var(--toast-surface) 85%, var(--color-3) 15%);
 }
 
 .toast--enter {

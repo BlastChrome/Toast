@@ -6,20 +6,12 @@ const main = (() => {
   const pubsub = new PubSub();
   const toast = new Toast(pubsub);
 
-  const MIN = 1;
-  const MAX = 9;
-  const button = document.querySelector("button");
-
-  const handleButtonClick = () => {
-    const currClass = button.classList.value;
-    const newClass = `color-${Math.floor(Math.random() * (MAX - MIN + 1)) + MIN}`;
-    button.classList = newClass;
-    pubsub.publish(EVENTS.colorChanged, {
-      oldColor: currClass,
-      newColor: newClass,
-      message: "show toast",
-    });
+  const handleToastButtonClick = e => {
+    const type = e.target.dataset.toastType;
+    const message = e.target.dataset.toastMessage;
+    toast.showToast({ message, type, duration: 5000 });
   };
+  const toastButtons = [...document.querySelectorAll("[data-toast-trigger]")];
 
-  button.addEventListener("click", handleButtonClick);
+  toastButtons.forEach(button => button.addEventListener("click", handleToastButtonClick));
 })();
