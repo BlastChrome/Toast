@@ -1,6 +1,6 @@
 const EVENTS = {
   colorChanged: "color:changed",
   showToast: "show:toast",
-  hideToast: "hide:toast",
+  historyUpdated: "history:updated",
 };
 export default EVENTS;

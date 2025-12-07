@@ -8,19 +8,21 @@ class PubSub {
       this.events[event] = [];
     }
     this.events[event].push(cb);
+    return () => {
+      this.unsubscribe(event, cb);
+    };
   }
 
   unsubscribe(event, cb) {
     if (!this.events[event]) return;
-    this.events[event] = this.events[event].filter((cb) => cb !== cb);
+    this.events[event] = this.events[event].filter(callback => callback !== cb);
   }
 
   publish(event, data) {
     if (!this.events[event]) return;
-    this.events[event].forEach((cb) => {
+    this.events[event].forEach(cb => {
       cb(data);
     });
   }
 }
-const pubSub = new PubSub();
-export default pubSub;
+export default PubSub;

@@ -1,9 +1,12 @@
-import pubSub from "./pubsub.js";
 import Toast from "./toast.js";
+import PubSub from "./pubsub.js";
+import ColorHistory from "./colorhistory.js";
 import EVENTS from "./events.js";
 
 const main = (() => {
-  const toast = new Toast();
+  const pubsub = new PubSub();
+  const toast = new Toast(pubsub);
+  const colorHistory = new ColorHistory(pubsub);
 
   const MIN = 1;
   const MAX = 9;
@@ -11,17 +14,14 @@ const main = (() => {
 
   const handleButtonClick = () => {
     const currClass = button.classList.value;
-    const newClass = `color-${
-      Math.floor(Math.random() * (MAX - MIN + 1)) + MIN
-    }`;
+    const newClass = `color-${Math.floor(Math.random() * (MAX - MIN + 1)) + MIN}`;
     button.classList = newClass;
-    pubSub.publish(EVENTS.colorChanged, "color has been changed");
+    pubsub.publish(EVENTS.colorChanged, {
+      oldColor: currClass,
+      newColor: newClass,
+      message: "show toast",
+    });
   };
 
   button.addEventListener("click", handleButtonClick);
-
-  pubSub.subscribe(EVENTS.colorChanged, (data) => {
-    toast.showToast(data);
-  });
-  pubSub.subscribe(EVENTS.hideToast, handleButtonClick);
 })();
