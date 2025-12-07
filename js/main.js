@@ -1,12 +1,10 @@
 import Toast from "./toast.js";
 import PubSub from "./pubsub.js";
-import ColorHistory from "./colorhistory.js";
 import EVENTS from "./events.js";
 
 const main = (() => {
   const pubsub = new PubSub();
   const toast = new Toast(pubsub);
-  const colorHistory = new ColorHistory(pubsub);
 
   const MIN = 1;
   const MAX = 9;

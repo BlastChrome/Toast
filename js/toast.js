@@ -5,14 +5,15 @@ class Toast {
     this.timing = 1000;
     this.toastEl = document.querySelector(".toast");
     this.pubSub = pubsub;
-    this.pubSub.subscribe(EVENTS.historyUpdated, this.showToast.bind(this));
+    this.pubSub.subscribe(EVENTS.colorChanged, this.showToast.bind(this));
   }
 
-  showToast({ message }) {
-    this.toastEl.querySelector(".toast__message").innerHTML = message;
+  showToast({ message } = {}) {
+    const toastMessage = message || "Update available";
+    this.toastEl.querySelector(".toast__message").innerHTML = toastMessage;
     this.toastEl.classList.add("show");
     this.hideToast();
-    this.pubSub.publish(EVENTS.showToast);
+    this.pubSub.publish(EVENTS.showToast, { message: toastMessage });
   }
 
   hideToast() {
