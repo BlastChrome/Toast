@@ -1,23 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <title>Toast Playground</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
-</head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">Weekend Lab</p>
+        <h1>Toast Playground</h1>
+        <p>Trigger different notification types, durations, and actions to put the toast/pub-sub system through its paces.</p>
+      </header>
 
-<body>
-    <p>click the button below to change it's color</p>
-    <button class="color-1">change color</button>
+      <section class="panel">
+        <h2>Quick triggers</h2>
+        <div class="trigger-grid">
+          <button class="color-5" data-toast-type="success" data-toast-message="Product added to cart">Success toast</button>
+          <button class="color-7" data-toast-type="error" data-toast-message="Checkout failed, please retry">Error toast</button>
+          <button class="color-1" data-toast-type="info" data-toast-message="FYI: Inventory is running low">Info toast</button>
+          <button class="color-3" data-toast-type="warning" data-toast-message="Shipping cut-off approaching">Warning toast</button>
+        </div>
+      </section>
 
-    <div class="toast">
-        <div class="toast__message">Test</div>
-        <div class="toast__action">x</div>
+      <section class="panel">
+        <h2>Custom toast</h2>
+        <form class="toast-form" id="toast-form">
+          <label>
+            Message
+            <input type="text" name="message" value="Custom message from form controls" required />
+          </label>
+
+          <div class="form-row">
+            <label>
+              Type
+              <select name="type">
+                <option value="success">Success</option>
+                <option value="error">Error</option>
+                <option value="info" selected>Info</option>
+                <option value="warning">Warning</option>
+              </select>
+            </label>
+
+            <label>
+              Duration (ms)
+              <input type="number" name="duration" min="0" step="250" value="2500" />
+            </label>
+          </div>
+
+          <div class="form-row">
+            <label class="checkbox">
+              <input type="checkbox" name="sticky" />
+              Sticky (requires manual dismiss)
+            </label>
+            <label>
+              Action label
+              <input type="text" name="action" placeholder="Undo / View order" />
+            </label>
+          </div>
+
+          <button class="color-9" type="submit">Fire custom toast</button>
+        </form>
+      </section>
+
+      <section class="panel panel--secondary">
+        <h2>Diagnostics</h2>
+        <p class="muted">Event log lets you verify published lifecycle events (queue handling, sticky dismissals, etc.). Future iterations can pipe actual data here.</p>
+        <div class="log" id="event-log" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div class="toast toast--info" role="status" aria-live="polite" aria-atomic="true">
+      <div class="toast__icon" aria-hidden="true">ℹ️</div>
+      <div class="toast__message">Ready to toast</div>
+      <button class="toast__action" type="button" aria-label="Dismiss toast">✕</button>
+      <div class="toast__progress" hidden></div>
     </div>
 
-</body>
-<script src="/js/main.js" type="module"></script>
-
+    <script src="/js/main.js" type="module"></script>
+  </body>
 </html>
