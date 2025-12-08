@@ -18,10 +18,10 @@
       <section class="panel">
         <h2>Quick triggers</h2>
         <div class="trigger-grid">
-          <button class="btn btn--success" data-toast-trigger data-toast-type="success" data-toast-message="Product added to cart">Success toast</button>
-          <button class="btn btn--error" data-toast-trigger data-toast-type="error" data-toast-message="Checkout failed, please retry">Error toast</button>
-          <button class="btn btn--info" data-toast-trigger data-toast-type="info" data-toast-message="FYI: Inventory is running low">Info toast</button>
-          <button class="btn btn--warning" data-toast-trigger data-toast-type="warning" data-toast-message="Shipping cut-off approaching">Warning toast</button>
+          <button class="btn btn--success" data-toast-trigger data-toast-duration="1000" data-toast-type="success" data-toast-message="Product added to cart">Success toast</button>
+          <button class="btn btn--error" data-toast-trigger data-toast-duration="5000" data-toast-type="error" data-toast-message="Checkout failed, please retry">Error toast</button>
+          <button class="btn btn--info" data-toast-trigger data-toast-duration="5000" data-toast-type="info" data-toast-message="FYI: Inventory is running low">Info toast</button>
+          <button class="btn btn--warning" data-toast-trigger data-toast-duration="0" data-toast-type="warning" data-toast-message="Shipping cut-off approaching">Warning toast</button>
         </div>
       </section>
 
@@ -52,7 +52,7 @@
 
           <div class="form-row">
             <label class="checkbox">
-              <input type="checkbox" name="sticky" />
+              <input type="checkbox" name="sticky" value="on" />
               Sticky (requires manual dismiss)
             </label>
             <label>
