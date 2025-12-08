@@ -20,12 +20,6 @@ class Toast {
     const toastDuration = duration || this.toastDuration;
     const toastSticky = sticky == "on" ? true : false;
 
-    this.toastEl.querySelector(".toast__message").textContent = toastMessage;
-    this.toastEl.querySelector(".toast__icon").textContent = this.toastIcons[toastType];
-
-    this.toastEl.classList.add("show");
-    this.toastEl.classList.add(`toast--${toastType}`);
-
     const toastPayload = {
       message: toastMessage,
       type: toastType,
@@ -33,13 +27,23 @@ class Toast {
       sticky: toastSticky,
       timeStamp: new Date(),
     };
+
+    this.toastEl.querySelector(".toast__message").textContent = toastMessage;
+    this.toastEl.querySelector(".toast__icon").textContent =
+      this.toastIcons[toastType];
+
+    this.toastEl.classList.add("show");
+    this.toastEl.classList.add(`toast--${toastType}`);
+
     this.pubSub.publish(EVENTS.showToast, toastPayload);
     if (!toastSticky) this.hideToast(toastDuration);
   }
 
   hideToast(duration) {
     setTimeout(() => {
-      const classesToRemove = this.toastEl.classList.value.split(" ").filter(item => item !== "toast");
+      const classesToRemove = this.toastEl.classList.value
+        .split(" ")
+        .filter((item) => item !== "toast");
       this.toastEl.classList.remove(...classesToRemove);
       this.pubSub.publish(EVENTS.hideToast);
     }, duration);
