@@ -9,7 +9,7 @@ const main = (() => {
   const handleToastButtonClick = e => {
     const type = e.target.dataset.toastType;
     const message = e.target.dataset.toastMessage;
-    toast.showToast({ message, type, duration: 5000 });
+    toast.showToast({ message, type });
   };
   const toastButtons = [...document.querySelectorAll("[data-toast-trigger]")];
 
